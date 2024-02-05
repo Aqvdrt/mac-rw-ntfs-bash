@@ -8,7 +8,7 @@ The `ntfs.sh` script can change the NTFS hard drive on the Mac system (Apple M s
 ## Preparation for the first run
 - Set the computer's security policy to "Reduced Security" and allow user management of kernel extensions from identified developers.
   - Press and hold the `Touch ID` or `Power button` for at least 10 seconds until Loading startup options appears (for Apple chips).
-  - Click `Options`-`Continue`-(upper left corner)`Utilities`-`Enable Security Utility`-`Security Policy`.
+  - Click `Options`-`Continue`-(upper left corner)`Utilities`-`Startup Security Utility`-`Security Policy`.
   - Select `Reduced Security`, check `Allow user management of kernel extensions from identified developers`, and click `OK`.
   - After the setting is successful, click the Apple logo in the upper left corner of the screen to `restart` the computer.
   - For specific steps, please refer to: https://support.apple.com/guide/mac-help/mchl768f7291/mac
