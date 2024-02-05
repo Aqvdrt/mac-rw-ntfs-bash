@@ -1,5 +1,7 @@
 #!/bin/bash
 # charset=utf-8
+# @author: aqvdrt
+# @date: 20240206
 # 功能：在搭载Apple芯片的Mac上，取消NTFS硬盘默认的只读挂载方式，改成可读写的挂载方式。
 # 
 # 【重要】执行此脚本的前置条件：
