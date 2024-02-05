@@ -2,7 +2,8 @@
 
 [English](readme.md) | [中文](readme-zh.md)
 
-The `ntfs.sh` script can change the NTFS hard drive on the Mac system (Apple M series chip) to a read-write mount mode, so that data can be directly written to the NTFS hard drive.
+The `ntfs.sh` script can change the NTFS hard drive on the Mac system (Apple M series chip) to a read-write mount mode, so that data can be directly written to the NTFS hard drive.This script is `free` and there is no need to download any paid software during use.
+`Everytime` you insert the NTFS hard drive, you `need to execute` this script before you can write data to the hard drive.
 
 ## Preparation for the first run
 - Set the computer's security policy to "Reduced Security" and allow user management of kernel extensions from identified developers.
