@@ -21,21 +21,31 @@
 # =============以下是需要执行的指令================
 
 # 第一步：检查是否有只读的NTFS硬盘
+echo "[重要] 要先将硬盘插入到电脑且识别成功，才可以重新挂载成功。"
+echo "[IMPORTANT] The hard drive must be connected to the computer and recognized successfully before it can be remounted successfully."
 if mount | grep ntfs | grep read-only
 then
     echo " "
 else
     echo "---当前不存在只读方式的NTFS硬盘.---"
     echo "---No read-only NTFS hard drive found.---"
-    mount | grep -E 'ntfs|macfuse'
+    echo " "
+    if mount | grep -E 'ntfs|macfuse'
+        then
+            echo "---NTFS硬盘已经是可读写模式.---"
+            echo "---NTFS hard drive is already read-write mode.---"
+            open /Volumes
+        else
+            echo "---当前未找到NTFS硬盘，请重新插入硬盘.---"
+            echo "---No NTFS hard drive found, please re-plug the hard drive.---"
+    fi
     exit
 fi
 
 # 第二步：确保所需环境已经安装
 echo "[重要] 请确保安全策略已设置为“降低安全性”，并允许用户管理来自被认可开发者的内核扩展。"
 echo "[IMPORTANT] Make sure the security options is set to 'Reduced Security', and allow user management of kernel extensions from identified developers"
-echo "[重要] 要先将硬盘插入到电脑且识别成功，才可以重新挂载成功。"
-echo "[IMPORTANT] The hard drive must be connected to the computer and recognized successfully before it can be remounted successfully."
+
 # 关闭系统的Gatekeeper安全功能，才能运行从非官方来源（如App Store和已知开发者）安装的应用程序
 sudo spctl --master-disable 
 # 检查homebrew，如果不存在就安装
@@ -109,11 +119,12 @@ do
     sudo -S $(which mount_ntfs) ${device_path} ${mount_path} # 此命令可以成功修改硬盘文件内容
     # sudo -S $(which ntfs-3g) ${device_path} ${mount_path} -o local -o allow_other -o auto_xattr -o volname=${mount_name} # 此命令无法成功修改硬盘文件内容
     echo "新设备[${mount_name}]已可读写！"
-    echo "即将自动打开finder (${mount_path})..."
     echo "Hard drive [${mount_name}] is allowed to write and read!"
+    echo "即将自动打开finder (${mount_path})..."
     echo "Opening finder (${mount_path})..."
     # 打开硬盘所挂载的根目录
     open ${mount_dir}
     echo '----------------------------------'
     echo " "
 done 
+exit
